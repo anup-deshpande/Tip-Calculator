@@ -54,14 +54,22 @@
 		09F883542295BB3F00A2B53C /* Tip Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				09F883552295BB3F00A2B53C /* AppDelegate.swift */,
 				09F883572295BB3F00A2B53C /* ViewController.swift */,
 				09F883592295BB3F00A2B53C /* Main.storyboard */,
-				09F8835C2295BB3F00A2B53C /* Assets.xcassets */,
-				09F8835E2295BB3F00A2B53C /* LaunchScreen.storyboard */,
+				09F883672295BB8500A2B53C /* Supporting Files */,
 				09F883612295BB3F00A2B53C /* Info.plist */,
 			);
 			path = "Tip Calculator";
+			sourceTree = "<group>";
+		};
+		09F883672295BB8500A2B53C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				09F883552295BB3F00A2B53C /* AppDelegate.swift */,
+				09F8835C2295BB3F00A2B53C /* Assets.xcassets */,
+				09F8835E2295BB3F00A2B53C /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,7 +173,7 @@
 		09F883622295BB3F00A2B53C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -226,7 +234,7 @@
 		09F883632295BB3F00A2B53C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -283,6 +291,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 59XJFY72WQ;
 				INFOPLIST_FILE = "Tip Calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -300,6 +309,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 59XJFY72WQ;
 				INFOPLIST_FILE = "Tip Calculator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
