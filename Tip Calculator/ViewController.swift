@@ -15,11 +15,17 @@ class ViewController: UIViewController , UITextFieldDelegate{
     @IBOutlet weak var customTipSlider: UISlider!
     @IBOutlet weak var calculatedTipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var customTipPercentageLabel: UILabel!
     
+    @IBOutlet weak var tipPercentageLabel: UILabel!
     @IBOutlet weak var ImageBackground: UIImageView!
     
-    var tipPercentage = 10.0
+    var tipPercentage = 10.0{
+        didSet{
+            tipPercentageLabel.text = "\(Int(tipPercentage))%"
+
+            calculateTotal()
+        }
+    }
     var billAmount = 0.0
     var tip = 0.00
     
@@ -27,8 +33,6 @@ class ViewController: UIViewController , UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         billValueTextField.delegate = self
-        customTipSlider.isEnabled = false
-
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -37,46 +41,42 @@ class ViewController: UIViewController , UITextFieldDelegate{
     
     @IBAction func clearAllClicked(_ sender: UIButton) {
         billValueTextField.text = ""
-        tipChoiceSelector.selectedSegmentIndex = 0
-        customTipPercentageLabel.text = "25 %"
+        tipPercentageLabel.text = "10%"
         totalLabel.text = "0.00"
         calculatedTipLabel.text = "0.00"
-        customTipSlider.isEnabled = false
     }
     
+    
     @IBAction func textEdited(_ sender: UITextField) {
-      print("Text Edited")
       billAmount = Double(sender.text!) ?? 0.00
       calculateTotal()
     }
     
     
-    @IBAction func segmentChoiceChanged(_ sender: UISegmentedControl) {
-        
-        if billValueTextField.text != ""{
-            billAmount = Double(billValueTextField.text!) ?? 0.00
-        }
-        
-        if sender.selectedSegmentIndex == 3 {
-            customTipSlider.isEnabled = true
-            tipPercentage = Double(customTipSlider.value.rounded())
-            calculateTotal()
-            
-        }else{
-            customTipSlider.isEnabled = false
-            
-            if sender.selectedSegmentIndex == 0{
-                tipPercentage = 10
-            }else if sender.selectedSegmentIndex == 1{
-                tipPercentage = 15
-            }else if sender.selectedSegmentIndex == 2{
-                tipPercentage = 18
+    @IBAction func percentageChangeButtonClicked(_ sender: UIButton) {
+        switch sender.title(for: UIControl.State.normal) {
+        case "➕":
+            if tipPercentage != 50{
+                tipPercentage += 1
             }
-            
-            calculateTotal()
+        case "➖":
+            if tipPercentage != 1{
+            tipPercentage -= 1
+            }
+        case "10":
+            tipPercentage = 10
+        case "15":
+            tipPercentage = 15
+        case "18":
+            tipPercentage = 18
+        case "20":
+            tipPercentage = 20
+            break
+        default:
+            print("default code")
         }
-   
     }
+    
     
     func calculateTotal(){
         tip = Double(billAmount * (tipPercentage/100))
@@ -84,11 +84,5 @@ class ViewController: UIViewController , UITextFieldDelegate{
         totalLabel.text = "$\(tip + billAmount)"
     }
     
-    @IBAction func sliderPositionChanged(_ sender: UISlider) {
-        print("\(sender.value.rounded())")
-        customTipPercentageLabel.text = "\(Int(sender.value.rounded()))% "
-        tipPercentage = Double(sender.value.rounded())
-        calculateTotal()
-    }
 }
 
