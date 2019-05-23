@@ -44,6 +44,10 @@ class ViewController: UIViewController , UITextFieldDelegate{
         tipPercentageLabel.text = "10%"
         totalLabel.text = "0.00"
         calculatedTipLabel.text = "0.00"
+        billAmount = 0.0
+        tip = 0.00
+        tipPercentage = 10.0
+        
     
     }
     
@@ -82,7 +86,7 @@ class ViewController: UIViewController , UITextFieldDelegate{
     func calculateTotal(){
         tip = Double(billAmount * (tipPercentage/100))
         calculatedTipLabel.text = "$\(String(format: "%.2f", tip))"
-        totalLabel.text = "$\(String(format: "%.2f", tip + billAmount))"
+        totalLabel.text = "$\(String(format: "%.2f",tip + billAmount))"
     }
     
 }
